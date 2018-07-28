@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import BitcoinDealer.views as bit_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', bit_views.home),
 ]
