@@ -49,3 +49,26 @@ git push origin your_branch_name
 
 ## 项目模块
 
+### AutoBitcoin模块
+
+`AutoBitcoin`模块是django模板生成的模块，主要包含项目的设置、路由、网管等配置
+* settings.py 项目配置
+* urls.py 路由配置
+* wsgi.py 网关
+这个模块我们只需要在`urls.py`编写路由信息即可，例如：
+```
+    path('', bit_views.home),
+```
+### BitcoinDealer模块
+`BitcoinDealer`也是通过django生成的模块，这个模块使我们项目具体实现的一个应用，具体的业务逻辑、数据库连接都在这一层实现
+* views.py 主要的业务逻辑、控制器
+* models.py 数据库model操作的封装，一个简易的ORM
+
+### BitcoinSDK模块
+封装对比特币交易网站api访问接口
+
+### PricePrediction模块
+价格预测实现
+
+### TradingStrategy模块
+交易策略的实现
