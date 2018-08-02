@@ -45,7 +45,7 @@ git push origin your_branch_name
 ## 项目依赖
 在开发的过程中，我们难免会使用第三方的库，比如后台开发框架django，机器学习相关的numpy、scipy等，如有使用到，请在下注明库名以及版本。其他同学在开发的时候安装即可。
 * django 2.0.7
-* pymysql 0.9.2
+* mysqlclient 1.3.13
 
 ## 项目模块
 

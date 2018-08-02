@@ -1,17 +1,15 @@
 from BitcoinSDK import HuobiServices
 from .env import ENV
 
-# ACCESS_KEY = "dbcc340f-86d9c6c6-a87c09fb-ec739"
-# SECRET_KEY = "c348fdd3-29a3e27e-c82f9c12-1b5cf"
-
+# 
 def getAccessKey(request):
-    if(ENV == 'dev'):
-        return 'bb3a0e08-7ad6be2b-4ab32336-eecf7'
+    # if(ENV == 'dev'):
+    #     return 'bb3a0e08-7ad6be2b-4ab32336-eecf7'
     return request.session['ACCESS_KEY']
 
 def getSecretKey(request):
-    if(ENV == 'dev'):
-        return '17497c8e-781c132b-00cf96d4-457c4'
+    # if(ENV == 'dev'):
+    #     return '17497c8e-781c132b-00cf96d4-457c4'
     return request.session['SECRET_KEY']
 
 '''
@@ -26,12 +24,7 @@ def get_kline(symbol, period, size=150):
     :param size: 可选值： [1,2000]
     :return:
     """
-    params = {'symbol': symbol,
-              'period': period,
-              'size': size}
-
-    url = MARKET_URL + '/market/history/kline'
-    return http_get_request(url, params)
+    return HuobiServices.get_kline(symbol, period, size)
 
 
 # 获取marketdepth
@@ -41,11 +34,7 @@ def get_depth(symbol, type):
     :param type: 可选值：{ percent10, step0, step1, step2, step3, step4, step5 }
     :return:
     """
-    params = {'symbol': symbol,
-              'type': type}
-    
-    url = MARKET_URL + '/market/depth'
-    return http_get_request(url, params)
+    return HuobiServices.get_depth(symbol, type)
 
 
 # 获取tradedetail
@@ -54,10 +43,7 @@ def get_trade(symbol):
     :param symbol
     :return:
     """
-    params = {'symbol': symbol}
-
-    url = MARKET_URL + '/market/trade'
-    return http_get_request(url, params)
+    return HuobiServices.get_trade(symbol)
 
 
 # 获取merge ticker
@@ -66,10 +52,7 @@ def get_ticker(symbol):
     :param symbol: 
     :return:
     """
-    params = {'symbol': symbol}
-
-    url = MARKET_URL + '/market/detail/merged'
-    return http_get_request(url, params)
+    return HuobiServices.get_ticker(symbol)
 
 
 # 获取 Market Detail 24小时成交量数据
@@ -78,10 +61,7 @@ def get_detail(symbol):
     :param symbol
     :return:
     """
-    params = {'symbol': symbol}
-
-    url = MARKET_URL + '/market/detail'
-    return http_get_request(url, params)
+    return HuobiServices.get_detail(symbol)
 
 # 获取  支持的交易对
 def get_symbols(request, long_polling=None):
