@@ -1,7 +1,7 @@
 from BitcoinSDK import HuobiServices
 from .env import ENV
 
-# 数据具体说明文档: https://github.com/huobiapi/API_Docs/wiki/REST_api_reference
+# 接口说明文档: https://github.com/huobiapi/API_Docs/wiki/REST_api_reference
 def getAccessKey(request):
     # if(ENV == 'dev'):
     #     return 'bb3a0e08-7ad6be2b-4ab32336-eecf7'
