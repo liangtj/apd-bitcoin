@@ -6,12 +6,12 @@ from .env import ENV
 
 def getAccessKey(request):
     if(ENV == 'dev'):
-        return 'dbcc340f-86d9c6c6-a87c09fb-ec739'
+        return 'bb3a0e08-7ad6be2b-4ab32336-eecf7'
     return request.session['ACCESS_KEY']
 
 def getSecretKey(request):
     if(ENV == 'dev'):
-        return 'c348fdd3-29a3e27e-c82f9c12-1b5cf'
+        return '17497c8e-781c132b-00cf96d4-457c4'
     return request.session['SECRET_KEY']
 
 '''
