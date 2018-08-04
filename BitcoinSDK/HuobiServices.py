@@ -5,7 +5,7 @@
 # @QQ      : 375235513
 # @github  : https://github.com/KlausQIU
 
-from Utils import *
+from .Utils import *
 
 '''
 Market data API
@@ -78,7 +78,7 @@ def get_detail(symbol):
     return http_get_request(url, params)
 
 # 获取  支持的交易对
-def get_symbols(long_polling=None, ACCESS_KEY, SECRET_KEY):
+def get_symbols(ACCESS_KEY, SECRET_KEY, long_polling=None):
     """
 
     """
@@ -139,7 +139,7 @@ def send_order(amount, source, symbol, _type, ACCESS_KEY, SECRET_KEY, price=0):
         acct_id = accounts['data'][0]['id']
     except BaseException as e:
         print ('get acct_id error.%s' % e)
-        acct_id = ACCOUNT_ID
+        acct_id = get_accounts()
 
     params = {"account-id": acct_id,
               "amount": amount,
@@ -314,7 +314,7 @@ def send_margin_order(amount, source, symbol, _type, ACCESS_KEY, SECRET_KEY, pri
         acct_id = accounts['data'][0]['id']
     except BaseException as e:
         print ('get acct_id error.%s' % e)
-        acct_id = ACCOUNT_ID
+        acct_id = get_accounts()
 
     params = {"account-id": acct_id,
               "amount": amount,

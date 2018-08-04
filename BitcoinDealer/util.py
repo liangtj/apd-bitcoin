@@ -1,20 +1,24 @@
 from BitcoinSDK import HuobiServices
 from .env import ENV
 
+
 # 接口说明文档: https://github.com/huobiapi/API_Docs/wiki/REST_api_reference
 def getAccessKey(request):
     # if(ENV == 'dev'):
     #     return 'bb3a0e08-7ad6be2b-4ab32336-eecf7'
     return request.session['ACCESS_KEY']
 
+
 def getSecretKey(request):
     # if(ENV == 'dev'):
     #     return '17497c8e-781c132b-00cf96d4-457c4'
     return request.session['SECRET_KEY']
 
+
 '''
 Market data API
 '''
+
 
 # 获取KLine
 def get_kline(symbol, period, size=150):
@@ -63,13 +67,15 @@ def get_detail(symbol):
     """
     return HuobiServices.get_detail(symbol)
 
+
 # 获取  支持的交易对
 def get_symbols(request, long_polling=None):
     return HuobiServices.get_symbols(
-        long_polling, 
+        long_polling,
         getAccessKey(request),
         getSecretKey(request)
     )
+
 
 '''
 Trade/Account API
@@ -81,6 +87,7 @@ def get_accounts(request):
         getAccessKey(request),
         getSecretKey(request)
     )
+
 
 # ACCOUNT_ID = 0
 # 获取当前账户资产
@@ -112,6 +119,7 @@ def send_order(request, amount, source, symbol, _type, price=0):
         price
     )
 
+
 # 撤销订单
 def cancel_order(request, order_id):
     return HuobiServices.cancel_order(
@@ -141,12 +149,12 @@ def order_matchresults(request, order_id):
 
 # 查询当前委托、历史委托
 def orders_list(
-    request, 
-    symbol, states, 
-    types=None, start_date=None, 
-    end_date=None, _from=None, 
-    direct=None, size=None
-    ):
+        request,
+        symbol, states,
+        types=None, start_date=None,
+        end_date=None, _from=None,
+        direct=None, size=None
+):
     """
     
     :param symbol: 
@@ -171,12 +179,12 @@ def orders_list(
 
 # 查询当前成交、历史成交
 def orders_matchresults(
-    request,
-    symbol, types=None, 
-    start_date=None, end_date=None, 
-    _from=None, direct=None, 
-    size=None
-    ):
+        request,
+        symbol, types=None,
+        start_date=None, end_date=None,
+        _from=None, direct=None,
+        size=None
+):
     """
     
     :param symbol: 
@@ -198,13 +206,12 @@ def orders_matchresults(
     )
 
 
-
 # 申请提现虚拟币
 def withdraw(
-    request, address,
-    amount, currency,
-    fee=0, addr_tag=""
-    ):
+        request, address,
+        amount, currency,
+        fee=0, addr_tag=""
+):
     """
 
     :param address_id: 
@@ -223,6 +230,7 @@ def withdraw(
         getSecretKey(request),
         fee, addr_tag
     )
+
 
 # 申请取消提现虚拟币
 def cancel_withdraw(request, address_id):
@@ -245,6 +253,7 @@ def cancel_withdraw(request, address_id):
 借贷API
 '''
 
+
 # 创建并执行借贷订单
 
 
@@ -265,6 +274,7 @@ def send_margin_order(request, amount, source, symbol, _type, price=0):
         price
     )
 
+
 # 现货账户划入至借贷账户
 
 
@@ -276,10 +286,11 @@ def exchange_to_margin(symbol, currency, amount, request):
     :return: 
     """
     return HuobiServices.exchange_to_margin(
-        symbol, currency, amount
+        symbol, currency, amount,
         getAccessKey(request),
         getSecretKey(request)
     )
+
 
 # 借贷账户划出至现货账户
 
@@ -298,6 +309,7 @@ def margin_to_exchange(request, symbol, currency, amount):
         getSecretKey(request)
     )
 
+
 # 申请借贷
 def get_margin(request, symbol, currency, amount):
     """
@@ -312,6 +324,7 @@ def get_margin(request, symbol, currency, amount):
         getSecretKey(request)
     )
 
+
 # 归还借贷
 def repay_margin(request, order_id, amount):
     """
@@ -325,12 +338,13 @@ def repay_margin(request, order_id, amount):
         getSecretKey(request)
     )
 
+
 # 借贷订单
 def loan_orders(
-    request,
-    symbol, currency, start_date="", 
-    end_date="", start="", direct="", 
-    size=""):
+        request,
+        symbol, currency, start_date="",
+        end_date="", start="", direct="",
+        size=""):
     """
     :param symbol: 
     :param currency: 
@@ -361,4 +375,4 @@ def margin_balance(request, symbol):
 
 
 if __name__ == '__main__':
-    print (get_symbols())
+    print(get_symbols())
