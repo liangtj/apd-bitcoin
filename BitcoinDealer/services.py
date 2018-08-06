@@ -19,7 +19,7 @@ import json
 Market data API
 '''
     
-def get_Kline(period,size=150):
+def get_kline(period,size=150):
     return basicServices.get_Kline("btcusdt", period, size)
 
 def get_trade():
@@ -40,12 +40,12 @@ def send_order(request, amount, source, symbol, _type):
 def orders_submitted_history():
     return basicServices.orders_matchresults(request, "btcusdt")
 
-def autoTrade(
+def auto_trade(
     request, buying_decline, selling_gain,
     purchase_quantity, min_num_of_positions,
     max_num_of_positions, stop_loss_ratio,
     take_profit_ratio, monitoring_time):
-    
+
     accountBalanceLists = basicServices.get_balance(request)["data"]["list"]
     bal = list(filter(lambda x: x["currency"]=="usdt" and x["type"] == 'trade', accountBalanceLists))
 
