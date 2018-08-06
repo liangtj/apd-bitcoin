@@ -7,7 +7,7 @@ Market data API
 '''
     
 def get_kline(period,size=150):
-    return basicServices.get_Kline("btcusdt", period, size)
+    return basicServices.get_kline("btcusdt", period, size)
 
 def get_trade():
     return basicServices.get_trade("btcusdt")
@@ -24,7 +24,7 @@ Trade/Account API
 def send_order(request, amount, source, symbol, _type):
     return basicServices.send_order(request, amount, "api", "btcusdt", _type)
 
-def orders_submitted_history():
+def orders_submitted_history(request):
     return basicServices.orders_matchresults(request, "btcusdt")
 
 # def auto_trade(
@@ -32,10 +32,10 @@ def orders_submitted_history():
 #     purchase_quantity, min_num_of_positions,
 #     max_num_of_positions, stop_loss_ratio,
 #     take_profit_ratio, monitoring_time):
-# 
+#
 #     accountBalanceLists = basicServices.get_balance(request)["data"]["list"]
 #     bal = list(filter(lambda x: x["currency"]=="usdt" and x["type"] == 'trade', accountBalanceLists))
-# 
+#
 #     if bal[0] > purchase_quantity:
 #         return json.dumps({status: "failed", msg: "purchase_quantity is too large"})
 #     return TradingStrategy.autoTrade(
