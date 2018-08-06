@@ -102,7 +102,7 @@ def get_balance(request):
 # 下单
 
 # 创建并执行订单
-def send_order(request, amount, source, symbol, _type, price=0):
+def send_order(request, amount, source, _type, price=0):
     """
     :param amount: 
     :param source: 如果使用借贷资产交易，请在下单接口,请求参数source中填写'margin-api'
